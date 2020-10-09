@@ -1,7 +1,7 @@
 #include "MetricUtils.hpp"
 
 #include "clang/AST/Decl.h"
-#include "clang/AST/ParentMapContext.h"
+#include "clang/AST/ParentMap.h"
 #include "clang/AST/Stmt.h"
 #include "clang/Basic/SourceLocation.h"
 #include "clang/Basic/SourceManager.h"
