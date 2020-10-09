@@ -432,12 +432,13 @@ MetricVisitor::PathResults MetricVisitor::getPathCount(const clang::Stmt *const 
 
 bool MetricVisitor::isExprConstantAndFalse(const clang::Expr *const p_expr) {
     bool retVal = false;
+	llvm::APSInt Result;
 
     /* See if the expression resolves to a constant integer & get the value if
      * so
      */
-    if( p_expr->isIntegerConstantExpr( *m_astContext ) ) {
-        llvm::Optional<llvm::APSInt> val = p_expr->getIntegerConstantExpr( *m_astContext );
+    if( p_expr->isIntegerConstantExpr(Result, *m_astContext ) ) {
+        llvm::Optional<llvm::APSInt> val = Result; //p_expr->getIntegerConstantExpr( *m_astContext );
 
         if ( val.getValue() == 0 ){
             retVal = true;
